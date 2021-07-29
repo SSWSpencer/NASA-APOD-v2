@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body {
+  background: linear-gradient(182deg, #1a0029, #7400b8, #56cfe1, #fc8117, #56cfe1, #7400b8, #1a0029);
+  background-size: 1400% 1400%;
+
+  -webkit-animation: VaporBackground 16s ease infinite;
+  -moz-animation: VaporBackground 16s ease infinite;
+  animation: VaporBackground 16s ease infinite;
+}
+
+@-webkit-keyframes VaporBackground {
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
+}
+@-moz-keyframes VaporBackground {
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
+}
+@keyframes VaporBackground {
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 0%}
+}
+@font-face {
+  font-family: 'Nasalization';
+  src: local('Nasalization'), url(./fonts/nasalization-rg.otf) format('truetype');
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: "Nasalization";
+  color: white;
+}
+
+h1{
+  font-size: 3.4rem;
+}
+h2{
+  font-size: 2.4rem;
+}
+h3{
+  font-size: 2rem;
+}
+h4{
+  font-size: 1.6rem;
+}
+h5{
+  font-size: 1.2rem;
+}
+
+h6{
+  font-size: 1rem;
+}
+
+p, a, span, button {
+  font-size: 1rem;
+  color: white;
+}
+

@@ -1,70 +1,8 @@
-# Getting Started with Create React App
+# NASA's Atronomy Photo of the Day
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a few-day project I made based on a previous project I had to do for school. For school, I basically had to create a webpage that would fetch data from NASA's APOD API and display it to the browser. In this project, over a year after doing it for school, I expanded on the premise and added some extra functionality.
 
-## Available Scripts
+In the first version, it was very cut-and-dry. It made a call to the API, stored the response in local state, and displayed the image alongside its title, date, and description. 
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+In this version, I created a redux store to hold the information of the past two weeks' of photos, and display them in a carousel. There is also the option to select a specific date (for example, one's birthday), and the application will automatically display that day's photo instead. 
+Above all, and the feature I am most proud of, is the search function, which allows the user to filter through over 9,540 entries posted by NASA since June 16, 1995 (a feature that is not directly supported by the API). This is probably not the most well-implemented feature due to the fact that it requires manual updating to keep the records up-to-date, but it was done by copy/pasting the entire archive from NASA's website (https://apod.nasa.gov/apod/archivepixFull.html) into the file ArchiveList.txt. Then I created the Python file, APODArchiveToJson.py to scan through the entire text document, and convert the text-based strings to json data. The generated json file is imported into Search.js, and the results are filtered and returned based on what a user searches for. On top of that, each search result includes a link to the original photo on NASA's website. This was made possible by the format of NASA's links to their pictures, such as https://apod.nasa.gov/apod/ap210728.html. Towards the end of the link, following /apod/ap and before .html, there is a 6 digit number, which is just the date of the picture in YY-MM-DD format. So given the exact date of a specific photo, one is able to splice the year into two digits, convert the alphabetical month into a two-digit number, and add on the day as a two-digit number, and get the link to that picutre. So while this is an imperfect way of creating a pseudo-search engine, it works well in its current state, and should work all the way up until NASA starts changing the format of their links (Which will likely be some time around the end of 2094, when they realize there's a finite number of dates that can be represented with only 6 numbers. But let's hope that by then you (the person reading this) and I are already retired, and don't have to worry about it!)
